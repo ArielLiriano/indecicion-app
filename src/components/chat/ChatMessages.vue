@@ -20,6 +20,7 @@ const { messages } = defineProps<Props>();
 const chatRef = ref<HTMLDivElement | null>(null);
 
 watch(messages, () => {
+  console.log('Se disparó el update de messages');
   setTimeout(() => {
     chatRef.value?.scrollTo({
       top: chatRef.value.scrollHeight,
