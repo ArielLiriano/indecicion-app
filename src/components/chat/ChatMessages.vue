@@ -15,12 +15,11 @@ import { ref, watch } from 'vue';
 interface Props {
   messages: ChatMessage[];
 }
-const { messages } = defineProps<Props>();
+const props = defineProps<Props>();
 
 const chatRef = ref<HTMLDivElement | null>(null);
 
-watch(messages, () => {
-  console.log('Se disparó el update de messages');
+watch(props, () => {
   setTimeout(() => {
     chatRef.value?.scrollTo({
       top: chatRef.value.scrollHeight,

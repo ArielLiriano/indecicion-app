@@ -35,6 +35,9 @@ describe('<ChatMessages/>', () => {
       },
     });
 
+    const scrollToMock = vi.fn();
+    const chatRef = wrapper.vm.$refs.chatRef as HTMLDivElement;
+    chatRef.scrollTo = scrollToMock;
     await wrapper.setProps({
       messages: [
         ...messages,
@@ -45,5 +48,10 @@ describe('<ChatMessages/>', () => {
         },
       ],
     });
+
+    
+    await new Promise((r) => setTimeout(r,150))
+
+    expect(scrollToMock).toHaveBeenCalled();
   });
 });
